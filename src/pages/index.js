@@ -1,11 +1,17 @@
 import React from "react";
+import Loadable from 'react-loadable';
 import "../styles/home.scss";
+
+const loader = () => <div></div>
+
+const HomeLazy = Loadable({
+  loader: () => import("../containers/Main"),
+  loading: loader,
+})
 
 const Index = () => {
   return (
-    <div>
-      <h1>This is the starting project for Web Unlocked tutorials</h1>
-    </div>
+    <HomeLazy />
   );
 };
 export default Index;
